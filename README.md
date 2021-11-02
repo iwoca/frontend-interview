@@ -11,13 +11,14 @@
 
 _If completing as a take home task_
 
-1. You should have been provided a link to a Trello board with various bugs / tasks to be completed.
+1. Please take a look at [this Trello board](https://trello.com/b/Y8kFd9tM/iwoca-application-portal-test), which has a selection of bugs / features to be completed
 1. Chose whatever tickets you would like to do from the the Trello board that you think will take around 2 hours of work.
-1. Feel free to add comments in the tickets themselves or you can use the Comments.md file in this repo for any info you want to relay to the reviewer.
+1. Any comments you want to pass along to the reviewer add to COMMENTS.md and commit
+1. To submit either send us a link to your public fork or another public repo. Alternatively you can zip up your files minus `node_modules` and email it over.
 
 _If completing as an in person interview._
 
-1. You will be completing 1 or 2 tickets from the Trello board as a pair programming exercise so take a read before you come in.
+1. You will be completing 1 or 2 tickets from [the Trello board](https://trello.com/b/Y8kFd9tM/iwoca-application-portal-test) as a pair programming exercise so take a read before you come in.
 2. Please set up and familiarise yourself with the repo, feel free to attempt any of smaller bugs to get a feel for the codebase (not compulsory)
 
 ### Notes
@@ -27,3 +28,4 @@ _If completing as an in person interview._
 - Attention to detail in the design will go a long way.
 - All the tickets features are for desktop but we would be very happy to see mobile considered.
 - Remember to check your project runs before submitting. - we will be running it in development mode to review.
+- Feel free to refactor the code where appropriate.
