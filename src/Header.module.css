@@ -1,0 +1,12 @@
+.Header {
+  padding: 20px 0;
+}
+
+.Header h1 {
+  color: #143b6b;
+  font-weight: 800;
+}
+
+.logo path {
+  fill: #fb534a;
+}

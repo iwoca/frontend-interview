@@ -1,0 +1,22 @@
+.SingleApplication {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto 1fr 1fr 1fr;
+  padding: 20px;
+
+  background-color: white;
+  box-shadow: 0px 5px 16px 0px rgba(173, 200, 215, 0.25);
+  border-radius: 10px;
+}
+
+.cell {
+  text-align: left;
+  border-right: 1px solid #eee;
+  padding: 0 15px;
+}
+
+.cell sub {
+  display: block;
+  font-size: 0.8rem;
+  color: #999;
+  margin-bottom: 5px;
+}
