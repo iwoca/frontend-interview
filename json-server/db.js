@@ -16,6 +16,8 @@ module.exports = () => {
     application["first_name"] = faker.name.firstName();
     application["last_name"] = faker.name.lastName();
     application["loan_amount"] = faker.finance.amount(1000, 150000, 0);
+    application["email"] = faker.internet.email();
+    application["company"] = faker.company.companyName();
 
     const creationDate = faker.date.between("01/01/2021", new Date());
     application["date_created"] = creationDate;
