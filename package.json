@@ -1,42 +1,45 @@
 {
-  "name": "frontend-interview",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "classnames": "^2.3.1",
-    "faker": "^5.5.3",
-    "json-server": "^0.17.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "api": "json-server ./json-server/db.js --delay 500 --routes ./json-server/routes.json --middlewares ./json-server/middleware.js --port 3001"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {}
+    "name": "frontend-interview",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "FE-start": "react-scripts start",
+        "FE-build": "react-scripts build",
+        "test": "react-scripts test",
+        "BE-start": "json-server ./json-server/db.js --delay 500 --routes ./json-server/routes.json --middlewares ./json-server/middleware.js --port 3001",
+        "start": "concurrently --kill-others \"npm:BE-start\" \"npm:FE-start\""
+    },
+    "dependencies": {
+        "@testing-library/jest-dom": "^5.14.1",
+        "@testing-library/react": "^11.2.7",
+        "@testing-library/user-event": "^12.8.3",
+        "classnames": "^2.3.1",
+        "faker": "^5.5.3",
+        "json-server": "^0.17.0",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-scripts": "4.0.3",
+        "web-vitals": "^1.1.2"
+    },
+    "devDependencies": {
+        "concurrently": "^6.4.0"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
 }
