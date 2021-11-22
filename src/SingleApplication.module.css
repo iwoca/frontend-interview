@@ -1,6 +1,6 @@
 .SingleApplication {
   display: grid;
-  grid-template-columns: 1fr 1fr auto 1fr 1fr 1fr;
+  grid-template-columns: 15% 15% auto 15% 15% 15%;
   padding: 20px;
 
   background-color: white;
