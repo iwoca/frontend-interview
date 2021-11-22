@@ -2,81 +2,69 @@ const faker = require("faker");
 
 faker.seed(14111954);
 
+const LOAN_TYPES = [
+  "Flexi-Loan",
+  "Business Loan",
+  "Cash Advance",
+  "RLS",
+  "CBILS",
+];
+
 module.exports = () => {
   const data = {
     applications: [],
-    profiles: [],
   };
 
   for (let i = 1; i <= 100; i++) {
-    let application = {};
+    const application = {
+      id: i,
+      first_name: faker.name.firstName(),
+      last_name: faker.name.lastName(),
+      loan_amount: parseInt(faker.finance.amount(1000, 150000, 0)),
+      loan_type: fakeLoanType(),
+      email: faker.internet.email(),
+      company: faker.company.companyName(),
+      date_created: faker.date.between("01/01/2021", new Date()),
+      expiry_date: faker.date.between("01/01/2021", new Date()),
+      avatar: faker.image.avatar(),
+      loan_history: fakeLoanHistory(),
+    };
 
-    application.id = i;
-
-    application["first_name"] = faker.name.firstName();
-    application["last_name"] = faker.name.lastName();
-    application["loan_amount"] = faker.finance.amount(1000, 150000, 0);
-    application["email"] = faker.internet.email();
-    application["company"] = faker.company.companyName();
-
-    const creationDate = faker.date.between("01/01/2021", new Date());
-    application["date_created"] = creationDate;
-    application["expiry_date"] = faker.date.between("01/01/2021", new Date());
-    application["last_name"] = faker.name.lastName();
     data.applications.push(application);
-
-    let profile = { ...application };
-
-    profile.avatar = faker.image.avatar();
-
-    const loanHistory = getLoanHistory();
-
-    profile["loan_history"] = loanHistory;
-
-    const loanTypes = [
-      "Flexi-Loan",
-      "Business Loan",
-      "Cash Advance",
-      "RLS",
-      "CBILS",
-    ];
-
-    var loan = loanTypes[Math.floor(Math.random() * loanTypes.length)];
-
-    profile["loan_type"] = loan;
-
-    data.profiles.push(profile);
   }
 
   return data;
 };
 
-function getLoanHistory() {
+function fakeLoanType() {
+  return LOAN_TYPES[faker.datatype.number(LOAN_TYPES.length - 1)];
+}
+
+function fakeLoanHistory() {
   let history = [];
 
   for (let index = 0; index < faker.datatype.number(10); index++) {
-    let singleYear = {};
     const currentDate = new Date();
     const year = currentDate.getFullYear();
     const yearForHistory = year - (index + 1);
 
-    singleYear["loan_started"] = faker.date.between(
-      `${yearForHistory}-01-01`,
-      `${yearForHistory}-06-30`
-    );
-    singleYear["loan_ended"] = faker.date.between(
-      `${yearForHistory}-07-01`,
-      `${yearForHistory}-12-31`
-    );
-
     const principle = faker.finance.amount(1000, 150000, 0);
-    singleYear.principle = parseInt(principle);
-
     const interestRate = faker.finance.amount(1, 10, 0);
+    const interest = (parseInt(interestRate) / 100) * parseInt(principle);
 
-    const totalInterest = (parseInt(interestRate) / 100) * parseInt(principle);
-
-    singleYear.interest = parseInt(Math.trunc(totalInterest));
+    const singleYear = {
+      loan_started: faker.date.between(
+        `${yearForHistory}-01-01`,
+        `${yearForHistory}-06-30`
+      ),
+      loan_ended: faker.date.between(
+        `${yearForHistory}-07-01`,
+        `${yearForHistory}-12-31`
+      ),
+      principle: parseInt(principle),
+      interest_rate: parseInt(interestRate) / 100,
+      interest: parseInt(Math.trunc(interest)),
+    };
 
     history.push(singleYear);
   }
