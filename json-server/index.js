@@ -5,6 +5,7 @@ const router = jsonServer.router(db());
 const jsonServerMiddlewares = jsonServer.defaults();
 const csrfMiddleware = require("./csrfMiddleware.js");
 const contentTypeMiddleware = require("./contentTypeMiddleware.js");
+const timeStampMiddleware = require("./timeStampMiddleware.js");
 const { SERVER_XCSRF_TOKEN } = require("./config.js");
 
 const DELAY = 500;
@@ -20,6 +21,7 @@ server.use((req, res, next) => {
 });
 
 server.use(jsonServer.bodyParser);
+server.use(timeStampMiddleware);
 
 server.use(API_BASE, router);
 server.get("/auth/xcsrftoken", (req, res) => {

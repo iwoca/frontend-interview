@@ -1,6 +1,7 @@
+const { FAKER_SEED } = require("./config.js");
 const faker = require("faker");
 
-faker.seed(14111954);
+faker.seed(FAKER_SEED);
 
 const LOAN_TYPES = [
   "Flexi-Loan",
