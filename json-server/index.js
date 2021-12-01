@@ -4,6 +4,7 @@ const db = require("./db.js");
 const router = jsonServer.router(db());
 const jsonServerMiddlewares = jsonServer.defaults();
 const csrfMiddleware = require("./csrfMiddleware.js");
+const contentTypeMiddleware = require("./contentTypeMiddleware.js");
 const { SERVER_XCSRF_TOKEN } = require("./config.js");
 
 const DELAY = 500;
@@ -12,6 +13,7 @@ const PORT = 3001;
 
 server.use(jsonServerMiddlewares);
 server.use(csrfMiddleware);
+server.use(contentTypeMiddleware);
 
 server.use((req, res, next) => {
   setTimeout(next, DELAY);
