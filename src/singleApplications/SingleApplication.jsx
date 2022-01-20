@@ -1,9 +1,10 @@
 import React from "react";
 import styles from "./SingleApplication.module.css";
+import NumberFormat from "react-number-format";
 
 const SingleApplication = ({ application }) => {
   return (
-    <div className={styles.SingleApplication}>
+    <div className={styles.SingleApplication} data-testid="single-application">
       <div className={styles.cell}>
         <sub>Company</sub>
         {application.company}
@@ -18,7 +19,12 @@ const SingleApplication = ({ application }) => {
       </div>
       <div className={styles.cell}>
         <sub>Loan Amount</sub>
-        {application.loan_amount}
+        <NumberFormat
+          value={application.loan_amount}
+          displayType="text"
+          thousandSeparator={true}
+          prefix="£"
+        />
       </div>
       <div className={styles.cell}>
         <sub>Application Date</sub>

@@ -1,0 +1,33 @@
+.Applications {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.status {
+  display: flex;
+  justify-content: center;
+}
+.footer {
+  display: flex;
+  flex-direction: column;
+}
+.footer p {
+  line-height: 1rem;
+}
+
+.btn {
+  width: 20%;
+  align-self: center;
+  margin: 0 20px 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  .footer {
+    margin: 0 1rem;
+  }
+  .btn {
+    width: 80%;
+  }
+}
