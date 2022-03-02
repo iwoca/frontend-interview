@@ -1,5 +1,5 @@
 const { FAKER_SEED } = require("./config.js");
-const faker = require("faker");
+const { faker } = require("@faker-js/faker");
 
 faker.seed(FAKER_SEED);
 
