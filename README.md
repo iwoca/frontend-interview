@@ -12,7 +12,7 @@
 
 ### The Task
 
-Currently there is only one application which is shown using a fixture in the codebase
+Currently there is only one application which is shown using a hard coded JSON fixture in the codebase
 
 The applications api http://localhost:3001/api/applications will return a JSON object of all applications for that user
 
@@ -21,12 +21,12 @@ You can paginate the endpoint using the query string `?_page=2&_limit=5` you mus
 see attached [Figma Link](https://www.figma.com/file/5NOBLAgL17n4qoR82vhYY5/iwoca---frontend-developer.-test?node-id=0%3A1&t=EMSHOn1fDlCrdgaC-1) for how this should look
 
 1. There is a pre styled `<Button />` component you can use for this.
-1. You must write tests to test the integration. Jest is preferred but you can use cypress or another library if more comfortable
 1. Any comments you want to pass along to the reviewer add to COMMENTS.md and commit
 1. To submit either send us a link to your public fork or another public repo. Alternatively you can zip up your files minus `node_modules` and email it over.
 
 ### Notes
 
+- We consider tests important here at iwoca. Jest is our preferred way of writing them, but you can use cypress or another library if more comfortable
 - Feel free to alter the technologies used in the code base, eg. we use CSS modules but if you are more comfortable with `styled-components` for example you can install and use that for your portion of the task.
 - Attention to detail in the design will go a long way.
 - All the tickets features are for desktop but we would be very happy to see mobile considered.
