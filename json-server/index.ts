@@ -4,7 +4,6 @@ import { csrfMiddleware } from "./csrfMiddleware.ts";
 import { contentTypeMiddleware } from "./contentTypeMiddleware.ts";
 import { timeStampMiddleware } from "./timeStampMiddleware.ts";
 import { SERVER_XCSRF_TOKEN } from "./config.ts";
-import parseLinkHeader from "parse-link-header";
 
 const { create, router: _router, defaults, bodyParser } = jsonServer;
 const server = create();
