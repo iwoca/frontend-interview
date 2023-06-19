@@ -27,12 +27,12 @@ type TApplication = {
   loan_history: TLoanHistory[];
 };
 
-type TApplicationGetResponse = {
+type TApplicationDBRow = {
   applications: TApplication[];
 };
 
-export function createDb(): TApplicationGetResponse {
-  const data: TApplicationGetResponse = {
+export function createDb(): TApplicationDBRow {
+  const data: TApplicationDBRow = {
     applications: [],
   };
 
