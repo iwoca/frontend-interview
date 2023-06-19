@@ -17,6 +17,7 @@
     "react/prop-types": "off"
   },
   "env": {
-    "browser": true
+    "browser": true,
+    "node": true
   }
 }

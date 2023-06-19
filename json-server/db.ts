@@ -1,5 +1,5 @@
-const { FAKER_SEED } = require("./config.js");
-const { faker } = require("@faker-js/faker");
+import { FAKER_SEED } from "./config.js";
+import { faker } from "@faker-js/faker";
 
 faker.seed(FAKER_SEED);
 
@@ -9,15 +9,35 @@ const LOAN_TYPES = [
   "Cash Advance",
   "RLS",
   "CBILS",
-];
+] as const;
 
-module.exports = () => {
-  const data = {
+type TLoanType = (typeof LOAN_TYPES)[number];
+
+type TApplication = {
+  id: number;
+  first_name: string;
+  last_name: string;
+  loan_amount: number;
+  loan_type: TLoanType;
+  email: string;
+  company: string;
+  date_created: Date;
+  expiry_date: Date;
+  avatar: string;
+  loan_history: TLoanHistory[];
+};
+
+type TApplicationGetResponse = {
+  applications: TApplication[];
+};
+
+export function createDb(): TApplicationGetResponse {
+  const data: TApplicationGetResponse = {
     applications: [],
   };
 
   for (let i = 1; i <= 100; i++) {
-    const application = {
+    const application: TApplication = {
       id: i,
       first_name: faker.person.firstName(),
       last_name: faker.person.lastName(),
@@ -35,14 +55,22 @@ module.exports = () => {
   }
 
   return data;
-};
+}
 
 function fakeLoanType() {
   return LOAN_TYPES[faker.number.int(LOAN_TYPES.length - 1)];
 }
 
-function fakeLoanHistory() {
-  let history = [];
+type TLoanHistory = {
+  loan_started: Date;
+  loan_ended: Date;
+  principle: number;
+  interest_rate: number;
+  interest: number;
+};
+
+function fakeLoanHistory(): TLoanHistory[] {
+  let history: TLoanHistory[] = [];
 
   for (let index = 0; index < faker.number.int(10); index++) {
     const currentDate = new Date();
@@ -64,7 +92,7 @@ function fakeLoanHistory() {
       }),
       principle: parseInt(principle),
       interest_rate: parseInt(interestRate) / 100,
-      interest: parseInt(Math.trunc(interest)),
+      interest: Math.trunc(interest),
     };
 
     history.push(singleYear);

@@ -1,4 +1,4 @@
-module.exports = (req, res, next) => {
+export function timeStampMiddleware(req, res, next) {
   if (req.method !== "POST") {
     return next();
   }
@@ -11,4 +11,4 @@ module.exports = (req, res, next) => {
   req.body.expiry_date = expiry_date;
 
   next();
-};
+}

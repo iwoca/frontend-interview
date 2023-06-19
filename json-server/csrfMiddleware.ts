@@ -1,6 +1,6 @@
-const { SERVER_XCSRF_TOKEN } = require("./config.js");
+import { SERVER_XCSRF_TOKEN } from "./config.js";
 
-module.exports = (req, res, next) => {
+export function csrfMiddleware(req, res, next) {
   if (req.method !== "POST") {
     return next();
   }
@@ -26,4 +26,4 @@ module.exports = (req, res, next) => {
   }
 
   next();
-};
+}
