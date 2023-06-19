@@ -1,47 +1,38 @@
 {
-    "name": "frontend-interview",
-    "version": "0.1.0",
-    "private": true,
-    "scripts": {
-        "FE-start": "react-scripts start",
-        "FE-build": "react-scripts build",
-        "test": "react-scripts test",
-        "BE-start": "node ./json-server/index.js",
-        "start": "concurrently --kill-others \"npm:BE-start\" \"npm:FE-start\""
-    },
-    "dependencies": {
-        "@faker-js/faker": "^6.0.0-alpha.7",
-        "@testing-library/jest-dom": "5.16.2",
-        "@testing-library/react": "12.1.3",
-        "@testing-library/user-event": "13.5.0",
-        "classnames": "2.3.1",
-        "json-server": "0.17.0",
-        "react": "17.0.2",
-        "react-dom": "17.0.2",
-        "react-hook-form": "7.27.1",
-        "react-scripts": "5.0.0",
-        "typescript": "^4.6.2",
-        "web-vitals": "2.1.4"
-    },
-    "devDependencies": {
-        "concurrently": "7.0.0"
-    },
-    "eslintConfig": {
-        "extends": [
-            "react-app",
-            "react-app/jest"
-        ]
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    }
+  "name": "frontend-interview",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "FE-start": "vite",
+    "FE-build": "tsc && vite build",
+    "test": "vitest",
+    "BE-start": "node ./json-server/index.js",
+    "start": "concurrently --kill-others \"npm:BE-start\" \"npm:FE-start\""
+  },
+  "dependencies": {
+    "@faker-js/faker": "^6.0.0-alpha.7",
+    "@testing-library/jest-dom": "5.16.2",
+    "@testing-library/react": "12.1.3",
+    "@testing-library/user-event": "13.5.0",
+    "classnames": "2.3.1",
+    "json-server": "0.17.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-hook-form": "7.27.1",
+    "typescript": "^4.6.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.0.0",
+    "concurrently": "7.0.0",
+    "jsdom": "^22.1.0",
+    "vite": "^4.3.9",
+    "vite-plugin-svgr": "^3.2.0",
+    "vitest": "^0.32.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  }
 }
