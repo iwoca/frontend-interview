@@ -1,4 +1,4 @@
-module.exports = (req, res, next) => {
+export function contentTypeMiddleware(req, res, next) {
   if (req.method !== "POST") {
     return next();
   }
@@ -16,4 +16,4 @@ module.exports = (req, res, next) => {
   }
 
   next();
-};
+}
