@@ -1,5 +1,12 @@
 import * as React from "react";
-import { FormProvider, useForm, useFormContext } from "react-hook-form";
+import {
+  FormProvider,
+  RegisterOptions,
+  useForm,
+  useFormContext,
+  UseFormRegister,
+  UseFormReturn,
+} from "react-hook-form";
 import { Button } from "../ui/Button/Button";
 import styles from "./CreateApplicationForm.module.css";
 
@@ -7,9 +14,16 @@ const ERROR_REQUIRED = "Required";
 const ERROR_MIN_AMOUNT = "Min. Amount >= 1000";
 const ERROR_MAX_AMOUNT = "Max. Amount <= 150000";
 
+type TFormValues = {
+  first_name: string;
+  last_name: string;
+  loan_amount: number;
+  loan_type: string;
+};
+
 export const CreateApplicationForm = () => {
-  const methods = useForm();
-  const onSubmit = (values) => console.log("SUBMIT", values);
+  const methods = useForm<TFormValues>();
+  const onSubmit = (values: TFormValues) => console.log("SUBMIT", values);
 
   return (
     <FormProvider {...methods}>
@@ -55,7 +69,7 @@ export const CreateApplicationForm = () => {
   );
 };
 
-const Input = ({ id, label, validation = {} }) => {
+const Input = ({ id, label, type = "text", validation = {} }) => {
   const { showError, error, register } = useFormField(id);
 
   return (
@@ -64,9 +78,9 @@ const Input = ({ id, label, validation = {} }) => {
         {label}
       </label>
       <input
-        type="text"
         className={styles.input}
         id={id}
+        type={type}
         {...register(validation)}
       />
       {showError ? <span className={styles.error}>{error}</span> : null}
@@ -104,11 +118,11 @@ const SelectInput = ({ id, label, options }) => {
   );
 };
 
-const useFormField = (id) => {
+const useFormField = (id: string) => {
   const { formState, register } = useFormContext();
 
   const hasSubmitted = formState.submitCount > 0;
-  const error = formState.errors[id]?.message;
+  const error = castErrorToString(formState.errors[id]);
   const showError = Boolean(
     (hasSubmitted || formState.touchedFields[id]) && error
   );
@@ -116,6 +130,19 @@ const useFormField = (id) => {
   return {
     showError,
     error,
-    register: (validation) => register(id, validation),
+    register: (validation: RegisterOptions) => register(id, validation),
   };
 };
+
+type THookFormError = UseFormReturn["formState"]["errors"][string];
+export function castErrorToString(error: THookFormError): string | undefined {
+  if (typeof error === "string") {
+    return error;
+  }
+
+  if (typeof error?.message === "string") {
+    return error.message;
+  }
+
+  return;
+}
