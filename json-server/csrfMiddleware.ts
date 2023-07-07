@@ -11,7 +11,7 @@ export function csrfMiddleware(req, res, next) {
       JSON.stringify({
         error: "Permission Denied: X-CSRF token required",
         detail:
-          'Retrieve your X-CSRF token from "/auth/xcsrftoken/" and set it as a "x-csrftoken" header',
+          'Retrieve your X-CSRF token from "/api/auth/xcsrftoken/" and set it as a "x-csrftoken" header',
       })
     );
   }

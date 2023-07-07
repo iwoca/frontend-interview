@@ -25,11 +25,11 @@ server.use((req, res, next) => {
 server.use(bodyParser);
 server.use(timeStampMiddleware);
 
-server.use(API_BASE, router);
-
-server.get("/auth/xcsrftoken", (req, res) => {
+server.get(`${API_BASE}/auth/xcsrftoken`, (req, res) => {
   res.status(200).send(JSON.stringify({ xcsrftoken: SERVER_XCSRF_TOKEN }));
 });
+
+server.use(API_BASE, router);
 
 server.listen(PORT, () => {
   console.log("JSON Server is running");
