@@ -1,6 +1,6 @@
 import "./App.css";
-import Applications from "./Applications";
-import Header from "./Header";
+import Applications from "./Applications/Applications.tsx";
+import Header from "./Header/Header.tsx";
 
 function App() {
   return (
