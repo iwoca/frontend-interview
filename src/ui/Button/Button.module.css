@@ -1,3 +1,11 @@
+body {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
 .button {
   background-color: var(--color-denim-15);
   border: 2px solid transparent;
@@ -9,6 +17,12 @@
   text-align: center;
   white-space: nowrap;
   transition: background-color 0.3s;
+  display: flex;
+  width: 200px;
+  height: 39px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .button:focus {
