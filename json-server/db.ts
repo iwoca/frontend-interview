@@ -54,6 +54,7 @@ export function createDb(): TApplicationDBRow {
     data.applications.push(application);
   }
 
+  console.log('DATA', data)
   return data;
 }
 
