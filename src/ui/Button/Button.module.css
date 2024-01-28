@@ -1,4 +1,6 @@
 .button {
+  width: fit-content;
+  align-self: center;
   background-color: var(--color-denim-15);
   border: 2px solid transparent;
   line-height: 24px;
