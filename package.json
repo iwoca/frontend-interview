@@ -8,8 +8,7 @@
     "FE-build": "tsc && vite build",
     "test": "vitest",
     "BE-start": "ts-node --esm ./json-server/index.ts",
-    "start": "concurrently --kill-others \"npm:BE-start\" \"npm:FE-start\"",
-    "jest": "react-scripts test --env=node",
+    "start": "concurrently --kill-others \"npm:BE-start\" \"npm:FE-start\""
   },
   "dependencies": {
     "@faker-js/faker": "8.0.2",
